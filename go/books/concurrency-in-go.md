@@ -1,16 +1,20 @@
 # Concurrency in Go 
 [By Katherine Cox-Buday][1]
 
-- Understand how Go addresses fundamental problems that make concurrency difficult to do correctly
+- Understand how Go addresses fundamental problems that make concurrency 
+difficult to do correctly
 - Learn the key differences between concurrency and parallelism
 - Dig into the syntax of Go’s memory synchronization primitives
 - Form patterns with these primitives to write maintainable concurrent code
-- Compose patterns into a series of practices that enable you to write large, distributed systems that scale
-- Learn the sophistication behind goroutines and how Go’s runtime stitches everything together 
+- Compose patterns into a series of practices that enable you to write large, 
+distributed systems that scale
+- Learn the sophistication behind goroutines and how Go’s runtime stitches 
+everything together 
 
 ## 1 - An Introduction to Concurrency
 
-- **Concurrent** - referring to a process that happens simultaneously with one or more processes 
+- **Concurrent** - referring to a process that happens simultaneously with one 
+or more processes 
 
 ### Moore's Law, Web Scale, and the Mess We're In
 
@@ -38,8 +42,10 @@
     - **web scale** - brand for software solving these issues
 
 - Herb Sutter
-  - [The free lunch is over: A fundamental turn toward concurrency in software][2]
-  - "We desperately need a higher-level programming model for concurrency than languages offer today"
+  - [The free lunch is over: A fundamental turn toward concurrency in 
+  software][2]
+  - "We desperately need a higher-level programming model for concurrency than 
+  languages offer today"
 
 ### Why is Concurrency Hard?
 
@@ -48,7 +54,20 @@
 
 #### Race Conditions
 
--
+- **race condition** - when multiple operations must execute in a certain order 
+but program is not written to guarantee that order
+- **data race** - one operation attempts to read variable while another 
+attempts to write
+- Use *go* keyword to run a function concurrently
+  - Doing so creates a *goroutine*
+- [example][3]
+- Prevention
+  - Do not assume that if a line of code executes before another it will execute
+first
+  - Meticulously iterate through possible scenarios
+  - Avoid trap of using sleeps to make less likely but not solve the issue
+  - Always target logical correctness
+- Changes to environment can evoke bug of untouched code
 
 #### Atomicity
 
@@ -78,3 +97,4 @@
 
 [1]: http://shop.oreilly.com/product/0636920046189.do
 [2]: http://gotw.ca/publications/concurrency-ddj.htm
+[3]: concurrency-in-go-example1.go
