@@ -43,9 +43,20 @@
 
 ### Why is Concurrency Hard?
 
-### Atomicity
+- Concurrent code is notoriously difficult to get right
+  - Issue may lay dormant until change affects timing
 
-### Memory Access Synchronization
+#### Race Conditions
+
+-
+
+#### Atomicity
+
+- 
+
+#### Memory Access Synchronization
+
+- 
 
 ### Deadlocks, Livelocks, and Starvation
 
