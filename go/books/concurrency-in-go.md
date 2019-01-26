@@ -71,7 +71,11 @@ first
 
 #### Atomicity
 
-- 
+- **atomic** - within the context that is operating, it is indivisible
+- Context is critical as atomicity of operation can change depending on scope
+- Combining atomic operations does not necessarily produce a larger atomic 
+operation
+- If something is atomic, implicitly it is safe within concurrent contexts
 
 #### Memory Access Synchronization
 
