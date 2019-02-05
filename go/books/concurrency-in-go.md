@@ -79,17 +79,43 @@ operation
 
 #### Memory Access Synchronization
 
-- 
+- **critical section** - section of program needing exclusive access to a 
+shared resource
+- Synchronizing access to the memory between critical sections is one way to 
+solve problem
+```go
+package main
+import (
+	"sync"
+)
 
-### Deadlocks, Livelocks, and Starvation
+func main (){
+	var memoryAccess sync.Mutex
+	var value int
+	go func() {
+		memoryAccess.Lock()
+		value++
+		memoryAccess.Unlock()
+	}()
+}
+```
+- If developers don't follow this convention, there is no guarantee
+of exclusive access.
+- Doesn't automatically solve data races or logical correctness and 
+potentially introduces maintenance and performance issues
+- Two questions in context of program is an art:
+    - Are my critical sections entered and exited repeatedly?
+    - What size should my critical sections be?
 
-#### Deadlock
+#### Deadlocks, Livelocks, and Starvation
 
-#### Livelock
+##### Deadlock
 
-#### Starvation
+##### Livelock
 
-### Determining Concurrency Safety
+##### Starvation
+
+#### Determining Concurrency Safety
 
 ### Simplicity in the Face of Complexity
 
