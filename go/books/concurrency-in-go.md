@@ -109,7 +109,27 @@ potentially introduces maintenance and performance issues
 
 #### Deadlocks, Livelocks, and Starvation
 
+- Issues related to ensuring your program has something useful to do
+
 ##### Deadlock
+
+- Concurrent processes are waiting on one another
+  - Will never recover without outside intervention
+- Go does detect some deadlocks
+  - All goroutines must be blocked or asleep
+- **Coffman Conditions**
+  - Basis for techniques that help detect, prevent and correct deadlocks
+  - [System Deadlocks][4]
+  - *Mutual Exclusion* (mutex)
+    - Process holds exclusive access to resource at point in time
+  - *Wait For Condition*
+    - Process must both hold resource and be waiting for an additional resource
+  - *No Preemption*
+    - A resource held by process can only be released by that same process
+  - *Circular Wait*
+    - P1 is waiting on P2, P2 is waiting on P1
+  - If at least one of these conditions is not true, deadlocks can be prevented
+
 
 ##### Livelock
 
@@ -128,3 +148,4 @@ potentially introduces maintenance and performance issues
 [1]: http://shop.oreilly.com/product/0636920046189.do
 [2]: http://gotw.ca/publications/concurrency-ddj.htm
 [3]: concurrency-in-go-example1.go
+[4]: http://www.ccs.neu.edu/home/pjd/cs7600-s10/Tuesday_January_26_01/p67-coffman.pdf
